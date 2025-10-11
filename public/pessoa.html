@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h1>Pessoa</h1>
+    <h1>Financêro</h1>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -38,21 +38,27 @@
         </div>
     </nav>
 
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2>Cadastro de pessoa</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="idNome">Nome</label>
+                        <input type="text" class="form-control" id="idNome" >
 
-    <form>
-        <div class="form-group">
-            <label for="idNome">Nome</label>
-            <input type="text" class="form-control" id="idNome" placeholder="Nome">
+                        <label for="idNascimento">Nascimento</label>
+                        <input type="date" class="form-control" id="idNascimento">
 
-            <label for="idNascimento">Nascimento</label>
-            <input type="date" class="form-control" id="idNascimento">
+                        <label for="idCpf">CPF</label>
+                        <input type="number" class="form-control" id="idCpf" maxlength="11">
 
-            <label for="idCpf">CPF</label>
-            <input type="number" class="form-control" id="idCpf" maxlength="11">
-
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gravar</button>
+                </form>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Gravar</button>
-    </form>
+    </div>
 </body>
 
 </html>

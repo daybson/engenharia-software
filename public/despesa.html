@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h1>Despesa</h1>
+    <h1>Financêro</h1>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -39,29 +39,36 @@
     </nav>
 
 
-    <form>
-        <div class="form-group">
-            <label for="idDescricao"">Descrição</label>
-            <input type="text" maxlength="100" class="form-control" id="idDescricao">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2>Cadastro de despesa</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="idDescricao"">Descrição</label>
+                        <input type=" text" maxlength="100" class="form-control" id="idDescricao">
 
-            <label for="idData">Data</label>
-            <input type="date" class="form-control" id="idData">
+                            <label for="idData">Data</label>
+                            <input type="date" class="form-control" id="idData">
 
-            <label for="idValor">Valor</label>
-            <input type="number" min="0" step="0.01" class="form-control">
+                            <label for="idValor">Valor</label>
+                            <input type="number" min="0" step="0.01" class="form-control">
 
-            <label for="idCategoria">Categoria</label>
-            <select id="idCategoria" class="form-control">
-                <option>Combustível</option>
-                <option>Alimentação</option>
-                <option>Internet</option>
-                <option>Farmácia</option>
-                <option>Petshop</option>
-            </select>
+                            <label for="idCategoria">Categoria</label>
+                            <select id="idCategoria" class="form-control">
+                                <option>Combustível</option>
+                                <option>Alimentação</option>
+                                <option>Internet</option>
+                                <option>Farmácia</option>
+                                <option>Petshop</option>
+                            </select>
+                        </div>
+
+                    <button type="submit" class="btn btn-primary">Gravar</button>
+                </form>
+            </div>
         </div>
-
-        <button type="submit" class="btn btn-primary">Gravar</button>
-    </form>
+    </div>
 </body>
 
 </html>
