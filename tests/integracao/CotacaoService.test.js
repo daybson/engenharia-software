@@ -36,4 +36,13 @@ describe('CotacaoService', () => {
             .toThrow('Não foi possível obter cotação do dólar');
     });
 
+    test('deve lançar um erro se a resposta da API tiver um formato inesperado', async () => {
+        const mockInvalidResponse = { data: {} };
+        axios.get.mockResolvedValue(mockInvalidResponse);
+
+        await expect(cotacaoService.obterCotacao())
+            .rejects
+            .toThrow('Formato de resposta inválido');
+    });
+
 });
