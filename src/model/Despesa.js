@@ -7,10 +7,10 @@ class Despesa {
         if (!data || !(data instanceof Date))
             throw new Error("Data inválida");
 
-        if (!valor || typeof valor !== "number")
+        if (!valor || typeof valor !== "number" || valor < 0)
             throw new Error("Valor inválido")
 
-        if (!categoria || typeof categoria !== "categoria")
+        if (!categoria || typeof categoria !== "string")
             throw new Error("Categoria inválida")
 
         this.descricao = descricao;
