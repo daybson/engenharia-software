@@ -3,17 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     formPessoa.addEventListener('submit', async (event) => {
         event.preventDefault();
-
+        const msgCompra = document.getElementById("mensagem");
         const descricao = document.getElementById('idDescricao').value;
         const data = document.getElementById('idData').value;
         const valor = document.getElementById('idValor').value;
-        const categoria = document.getElementById('idCategoria').value; 
+        const categoria = document.getElementById('idCategoria').value;
 
         const dados = {
             descricao: descricao,
             data: data,
             valor: valor,
-            categoria: categoria 
+            categoria: categoria
         };
 
         try {
@@ -28,15 +28,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await response.json();
 
             if (!response.ok) {
+                msgCompra.style.display = "none";
                 throw new Error(result.error);
             }
-
+            msgCompra.style.display = "block";
             alert(result.message);
             formPessoa.reset();
         }
         catch (error) {
             console.error("Erro ao enviar formulário", error);
-            alert('Erro: ' + error.messsage);
+            alert('Erro: ' + error.message);
         }
     });
 });
