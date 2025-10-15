@@ -39,7 +39,8 @@ Este é um projeto de estudo para a disciplina de Engenharia de Software, que co
 
 # Como Executar os Testes
 
-Para rodar os testes unitários do projeto, execute o seguinte comando na raiz do projeto:
+Para rodar os testes do projeto, execute o seguinte comando na raiz do projeto:
 
   > npm run test
-
+  > npm run test:coverage
+  > npm run test:acceptance
