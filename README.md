@@ -14,7 +14,7 @@ Este é um projeto de estudo para a disciplina de Engenharia de Software, que co
 
     Node.js (versão 14 ou superior)
 
-    npm (geralmente instalado junto com o Node.js)
+    npm
 
 ## Passos
 
@@ -40,7 +40,8 @@ Este é um projeto de estudo para a disciplina de Engenharia de Software, que co
 # Como Executar os Testes
 
 Para rodar os testes do projeto, execute o seguinte comando na raiz do projeto:
-
   > npm run test
+> 
   > npm run test:coverage
+>     
   > npm run test:acceptance
