@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     formPessoa.addEventListener('submit', async (event) => {
         event.preventDefault();
-        const msgCompra = document.getElementById("mensagem");
+        const mensagemOperacao = document.getElementById("mensagem");
         const nome = document.getElementById('idInstituicao').value;
         const numeroConta = document.getElementById('idNumeroConta').value;
         const digitoConta = document.getElementById('idDigitoConta').value;
@@ -28,14 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const result = await response.json();
-
-            if (!response.ok) {
-                msgCompra.style.display = "none";
-                throw new Error(result.error);
+            const texto = result && (result.message || result.error || JSON.stringify(result));
+            if (mensagemOperacao) {
+                console.log('Resultado da operação OK:', texto);
+                mensagemOperacao.textContent = texto || '';
+                if (response.ok) {
+                    mensagemOperacao.classList.remove('text-danger');
+                    mensagemOperacao.classList.add('text-success');
+                    formPessoa.reset();
+                } else {
+                    console.log('Resultado da operação ERRO:', texto);
+                    mensagemOperacao.classList.remove('text-success');
+                    mensagemOperacao.classList.add('text-danger');
+                }
             }
-            msgCompra.style.display = "block";
-            alert(result.message);
-            formPessoa.reset();
         }
         catch (error) {
             console.error("Erro ao enviar formulário", error);
