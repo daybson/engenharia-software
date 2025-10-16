@@ -5,11 +5,11 @@ const puppeteer = require('puppeteer');
 // Aumenta o timeout padrão do jest para evitar timeouts em operações de browser
 jest.setTimeout(30000);
 
-const feature = loadFeature(path.join(__dirname, "../feature/pessoa.feature"));
+const feature = loadFeature(path.join(__dirname, "../feature/despesa.feature"));
 
 defineFeature(feature, (test) => {
     let browser, page;
-    const filePath = 'http://localhost:3000/pessoa.html';
+    const filePath = 'http://localhost:3000/despesa.html';
 
     beforeAll(async () => {
         browser = await puppeteer.launch({
@@ -33,36 +33,38 @@ defineFeature(feature, (test) => {
     });
 
     test("Cadastro bem sucedido", ({ given, and, then }) => {
-        given("que o usuário acessou a página de Pessoa", async () => {
+        given("que o usuário acessou a página de Cadastrar Despesa", async () => {
             const titulo = await page.title();
-            expect(titulo).toBe("Cadastro de Pessoa");
+            expect(titulo).toBe("Cadastrar Despesa");
         });
 
-        and("adicionou seu nome, nascimento e cpf", async () => {
-            await page.$eval("#idNome", el => el.value = "João da Silva");
-            await page.$eval("#idNascimento", el => el.value = "1990-01-01");
-            await page.$eval("#idCpf", el => el.value = "07578894099");
+        and("adicionou descrição, data, valor e selecionou uma categoria", async () => {
+            await page.$eval("#idDescricao", el => el.value = "Compra de Material");
+            await page.$eval("#idData", el => el.value = "2023-03-15");
+            await page.$eval("#idValor", el => el.value = "150.00");
+            await page.$eval("#idCategoria", el => el.value = "Alimentação");
         });
 
         and('clicou em "Gravar"', async () => {
             await page.click("#btnGravar");
         });
 
-        then('o sistema deve exibir a mensagem "Cadastrado com sucesso!"', async () => {
+        then('o sistema deve exibir a mensagem "Despesa cadastrada com sucesso!"', async () => {
             await page.waitForSelector("#mensagem", { visible: true });
         });
     });
 
     test("Cadastro mal sucedido", ({ given, and, then }) => {
-        given("que o usuário acessou a página de Pessoa", async () => {
+        given("que o usuário acessou a página de Cadastrar Despesa", async () => {
             const titulo = await page.title();
-            expect(titulo).toBe("Cadastro de Pessoa");
+            expect(titulo).toBe("Cadastrar Despesa");
         });
 
-        and("não adicionou seu nome, nascimento e nem cpf", async () => {
-            await page.$eval("#idNome", el => el.value = "");
-            await page.$eval("#idNascimento", el => el.value = "");
-            await page.$eval("#idCpf", el => el.value = "");
+        and("não adicionou descrição, data, valor e selecionou uma categoria", async () => {
+            await page.$eval("#idDescricao", el => el.value = "");
+            await page.$eval("#idData", el => el.value = "");
+            await page.$eval("#idValor", el => el.value = "");
+            await page.$eval("#idCategoria", el => el.value = "");
         });
 
         and('clicou em "Gravar"', async () => {

@@ -10,3 +10,9 @@ Funcionalidade: Cadastrar Pessoa
         E adicionou seu nome, nascimento e cpf
         E clicou em "Gravar"
         Então o sistema deve exibir a mensagem "Cadastrado com sucesso!"
+
+    Cenário: Cadastro mal sucedido
+        Dado que o usuário acessou a página de Pessoa
+        E não adicionou seu nome, nascimento e nem cpf
+        E clicou em "Gravar"
+        Então o sistema deve exibir a mensagem "Campos obrigatórios não foram informados."
