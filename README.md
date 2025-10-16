@@ -1,47 +1,150 @@
-# Engenharia de Software
-Este é um projeto de estudo para a disciplina de Engenharia de Software, que consiste em uma aplicação web full-stack simples. O objetivo é demonstrar a integração entre um frontend estático (HTML, CSS, JavaScript) e um backend Node.js com Express
+# 🏗️ Engenharia de Software — Projeto de Exemplo
 
-# Funcionalidades
-    - Consulta de Cotação do Dólar: A página inicial exibe a cotação atual do Dólar Americano (USD) em Reais (BRL), consumindo uma API externa através do backend.
-    - Cadastro de Pessoas: Uma página com um formulário para cadastrar um novo usuário (Nome, Nascimento, CPF). Os dados são enviados para o backend, que simula a gravação em um banco de dados.
-    - Cadastro de Conta Corrente: Uma página com um formulário para cadastrar uma noao conta corrente.
-    - Cadastro de Despesas: Uma página com um formulário para cadastrar uma nova despesa.
-    - API Interna: O backend expõe rotas para servir os dados ao frontend de forma segura e controlada.
-    - Testes Unitários: O projeto inclui testes para a camada de serviço, garantindo a qualidade e o comportamento esperado da lógica de negócio.
+Um projeto de estudo que demonstra uma aplicação web full‑stack simples (frontend estático + backend Node.js/Express) com testes unitários, de integração e aceitação.
 
-# Como Executar o Projeto
-## Pré-requisitos
+---
 
-    Node.js (versão 14 ou superior)
+## ✨ Funcionalidades principais
 
-    npm
+- 🔍 Consulta de cotação do Dólar (via backend)
+- 🧑‍💼 Cadastro de Pessoas (Nome, Nascimento, CPF)
+- 🏦 Cadastro de Conta Bancária (instituição, conta, agência)
+- 🧾 Cadastro de Despesas
+- 🧪 Testes: unitários, de integração e de aceitação (Puppeteer + jest-cucumber)
 
-## Passos
+---
 
-    Clone o repositório:
+## 🚀 Como executar
 
-    > git clone [https://github.com/daybson/engenharia-software.git](https://github.com/daybson/engenharia-software.git)
+Pré-requisitos:
 
-    Navegue até a pasta do projeto:
+- Node.js 14+ (recomendado)
+- npm
 
-    > cd engenharia-software
+Instalação e execução:
 
-    Instale as dependências do backend:
+```powershell
+# clonar o repositório
+git clone https://github.com/daybson/engenharia-software.git
+cd engenharia-software
 
-    > npm install
+# instalar dependências
+npm install
 
-    Inicie o servidor:
+# iniciar o servidor (será servido em http://localhost:3000)
 
-    > npm start
+```
 
-    Acesse a aplicação:
-    Abra seu navegador e acesse http://localhost:3000.
+Abra no navegador: http://localhost:3000
 
-# Como Executar os Testes
+---
 
-Para rodar os testes do projeto, execute o seguinte comando na raiz do projeto:
-  > npm run test
-> 
-  > npm run test:coverage
->     
-  > npm run test:acceptance
+## 🗂️ Estrutura de pastas
+
+```
+engenharia-software/
+├─ package.json
+├─ README.md
+├─ public/                 # Frontend estático
+│  ├─ index.html
+│  ├─ pessoa.html
+│  ├─ contabancaria.html
+│  ├─ despesa.html
+│  └─ js/
+│     ├─ pessoa.js
+│     ├─ conta-bancaria.js
+│     └─ despesa.js
+├─ src/                    # Backend (Express)
+│  ├─ server.js
+│  └─ CotacaoService.js
+├─ tests/
+│  ├─ unitario/            # Testes unitários (Jest)
+│  │  ├─ Pessoa.test.js
+│  │  ├─ ContaBancaria.test.js
+│  │  └─ Despesa.test.js
+│  ├─ integracao/          # Testes de integração
+│  │  └─ CotacaoService.test.js
+│  └─ aceitacao/           # Testes de aceitação (jest-cucumber + Puppeteer)
+│     ├─ pessoa.steps.js
+│     ├─ contabancaria.steps.js
+│     └─ feature/
+│        ├─ pessoa.feature
+│        └─ contabancaria.feature
+└─ coverage/                # Relatórios de cobertura (gerados por jest)
+```
+
+---
+
+## 🧪 Testes — tipos e comandos
+
+Este projeto possui três tipos principais de testes:
+
+### 1) Testes unitários (rápidos) ✅
+- Onde: `tests/unitario/`
+- O que testam: lógica de domínio (ex.: validação, cálculos)
+- Como rodar:
+
+```powershell
+npm run test
+```
+
+> Observação: Esse script executa o Jest padrão e roda todos os testes configurados.
+
+
+### 2) Testes de integração (serviços) 🔁
+- Onde: `tests/integracao/`
+- O que testam: integração com serviços internos ou APIs (ex.: CotacaoService)
+- Como rodar (juntamente com testes unitários):
+
+```powershell
+npm run test
+```
+
+### 3) Testes de aceitação / end-to-end (Puppeteer + jest-cucumber) 🌐
+- Onde: `tests/aceitacao/` e `tests/feature/`
+- O que testam: fluxo do usuário (UI) automatizado via navegador controlado (Puppeteer)
+- Observações importantes:
+  - O servidor (`npm start`) precisa estar rodando em `http://localhost:3000` antes de executar esses testes.
+  - Os testes abrem um navegador (modo não‑headless por padrão no repositório); em CI você pode preferir rodar em headless.
+
+- Como rodar apenas os testes de aceitação:
+
+```powershell
+npm run test:acceptance
+```
+
+- Dica: se preferir rodar o Jest diretamente com glob (PowerShell requer aspas duplas escapadas):
+
+```powershell
+npx jest "**/tests/aceitacao/**/*.steps.js"
+```
+
+---
+
+## 📊 Cobertura de testes (coverage)
+
+- O comando de cobertura executa os testes e gera relatórios detalhados de cobertura (linhas, funções, branches).
+- Como rodar:
+
+```powershell
+npm run test:coverage
+```
+
+- Saída esperada:
+  - Uma pasta `coverage/` será gerada na raiz do projeto.
+  - Relatório HTML navegável em `coverage/lcov-report/index.html` (abra no navegador para visualização detalhada).
+
+- Dica para ver rapidamente no sistema (PowerShell):
+
+```powershell
+# abre o relatório HTML padrão no Windows (substitua o caminho se necessário)
+Start-Process .\coverage\lcov-report\index.html
+```
+
+---
+
+## ✅ Resultado esperado
+
+- Ao rodar `npm run test:acceptance` com o servidor ativo, os scripts controlam um navegador via Puppeteer e verificam os fluxos de cadastro (pessoa, conta bancária, despesa). O relatório final do Jest apresenta quantos testes passaram/falharam.
+
+ ✨
