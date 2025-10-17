@@ -1,5 +1,7 @@
 # 🏗️ Engenharia de Software — Projeto de Exemplo
 
+Aluno: DAYBSON BERTASSONNI SALLES PAISANTE
+
 Um projeto de estudo que demonstra uma aplicação web full‑stack simples (frontend estático + backend Node.js/Express) com testes unitários, de integração e aceitação.
 
 ---
