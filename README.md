@@ -34,7 +34,7 @@ cd engenharia-software
 npm install
 
 # iniciar o servidor (será servido em http://localhost:3000)
-
+npm start
 ```
 
 Abra no navegador: http://localhost:3000
