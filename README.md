@@ -144,6 +144,7 @@ Start-Process .\coverage\lcov-report\index.html
 ```
 
 ---
+<img width="433" height="179" alt="image" src="https://github.com/user-attachments/assets/ab6814d8-0353-446f-ba44-bf6c0f6db039" />
 
 ## ✅ Resultado esperado
 
